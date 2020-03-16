@@ -1,0 +1,43 @@
+<nt name="user-form-text">
+	<div class="form-group">
+		<label class="label" n-attr-for="::field.id" n-content="{::field.label}">Имя пользователя</label>
+		<input type="text" n-name="::field.name" n-value=":{::field.name}" class="form-control" n-attr-id="::field.id" n-attr-placeholder="::field.placeholder">
+		<small class="form-text text-muted"> Имя пользователя</small>
+	</div>
+</nt>
+
+<nt name="user-form-email">
+	<div class="form-group">
+		<label class="label" n-attr-for="::field.id" n-content="{::field.label}">E-mail</label>
+		<input type="email" n-name="::field.name" n-value=":{::field.name}" class="form-control" n-attr-id="::field.id" n-attr-placeholder="::field.placeholder">
+		<small class="form-text text-muted"> E-mail пользователя</small>
+	</div>
+</nt>
+
+<nt name="user-form-password">
+	<div class="form-group">
+		<label n-attr-for="::field.id" class="label" n-content-capitalizeFirst="{::field.placeholder}"></label>
+		<input class="form-control" n-value=":{::field.name}" n-attr-id="::field.id" n-name="::field.name" n-attr-placeholder="::field.placeholder" type="password">
+		<small class="form-text text-muted"> Введите пароль</small>
+		<div class="note">
+			<a class="forgotPasswordNote" n-href="/restore">Забыли пароль?</a>
+		</div>
+	</div>
+</nt>
+
+<nt name="user-form-submit" target="footer">
+	<div class="form-group">
+		<button n-bind-click="::submit" type="submit" class="btn btn-primary" id="submitBtn">Отправить</button>
+		<div class="invalid-feedback" n-class-show-hide=":error" n-content="{:message}"></div>
+	</div>
+</nt>
+
+<nt name="user-form-wrapper">
+	<div class="user-form">
+		<form action="" n-attr-id="::formId" class="smart-form client-form">
+			<header n-content="{:title}"></header>
+			<fieldset role="body"></fieldset>
+			<footer role="footer"></footer>
+		</form>
+	</div>
+</nt>

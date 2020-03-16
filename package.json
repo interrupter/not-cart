@@ -1,0 +1,100 @@
+{
+		"name": "not-cart",
+		"version": "0.0.1",
+		"description": "not-* family cart model and interface in not- environment",
+		"main": "index.js",
+		"scripts": {
+				"test": "./node_modules/.bin/mocha --reporter spec ./test/server/**.js",
+				"test.vue": "jest ./test/client",
+				"pretest": "./node_modules/.bin/eslint ./src/**/**.js",
+				"lint": "./node_modules/.bin/eslint ./src/**/**.js --fix",
+				"docs": "./node_modules/.bin/jsdoc -c jsdoc.json",
+				"cover": "nyc npm test"
+		},
+		"repository": {
+				"type": "git",
+				"url": "git+https://github.com/interrupter/not-cart.git"
+		},
+		"keywords": [
+				"not-framework",
+				"not-node",
+				"cart"
+		],
+		"author": "interrupter <alex.repin@mail.ru> (http://github.com/interrupter)",
+		"license": "ISC",
+		"bugs": {
+				"url": "https://github.com/interrupter/not-user/issues"
+		},
+		"homepage": "https://github.com/interrupter/not-user#readme",
+		"dependencies": {
+				"not-config": "0.0.4",
+				"not-error": "0.0.20",
+				"not-filter": "^0.2.2",
+				"not-locale": "*",
+				"not-log": "0.0.14",
+				"not-node": "^3.3.47",
+				"not-one-time-code": "^0.1.1",
+				"uuidv4": "*",
+				"validator": "^12.2.0"
+		},
+		"devDependencies": {
+				"@babel/preset-env": "^7.8.7",
+				"babel-jest": "^25.1.0",
+				"babel-preset-env": "^1.7.0",
+				"chai": "^4.2.0",
+				"chai-as-promised": "*",
+				"electron": "^8.1.1",
+				"electron-mocha": "^8.2.1",
+				"eslint": "^6.8.0",
+				"expect": "^25.1.0",
+				"ink-docstrap": "*",
+				"jest": "^25.1.0",
+				"jsdoc": "^3.6.3",
+				"jsdom": "^16.2.1",
+				"jsdom-global": "^3.0.2",
+				"mocha": "^7.1.0",
+				"mocha-webpack": "^1.1.0",
+				"mongodb-memory-server": "^6.3.3",
+				"nyc": "^15.0.0",
+				"regenerator-runtime": "^0.13.5",
+				"request": "^2.88.2",
+				"retire": "^2.0.3",
+				"should": "^13.2.3"
+		},
+		"nyc": {
+				"include": [
+						"index.js",
+						"src/**/**/**.js"
+				],
+				"exclude": [
+						"test/**/**/**/**.js"
+				],
+				"reporter": [
+						"html"
+				],
+				"check-coverage": true,
+				"per-file": true,
+				"lines": 95,
+				"statements": 95,
+				"functions": 95,
+				"branches": 95,
+				"watermarks": {
+						"lines": [
+								80,
+								95
+						],
+						"functions": [
+								80,
+								95
+						],
+						"branches": [
+								80,
+								95
+						],
+						"statements": [
+								80,
+								95
+						]
+				}
+		}
+}
