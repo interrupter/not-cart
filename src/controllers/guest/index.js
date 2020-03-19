@@ -1,7 +1,7 @@
 let manifest = {
-  service:{
-    cart
-  }
+	service: {}
 };
 
-export {manifest};
+export {
+	manifest
+};

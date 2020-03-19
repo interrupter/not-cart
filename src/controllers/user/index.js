@@ -1,0 +1,4 @@
+let manifest = {  
+};
+
+export {manifest};

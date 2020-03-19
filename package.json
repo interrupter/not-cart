@@ -4,12 +4,15 @@
 		"description": "not-* family cart model and interface in not- environment",
 		"main": "index.js",
 		"scripts": {
-				"test": "./node_modules/.bin/mocha --reporter spec ./test/server/**.js",
-				"test.vue": "jest ./test/client",
-				"pretest": "./node_modules/.bin/eslint ./src/**/**.js",
-				"lint": "./node_modules/.bin/eslint ./src/**/**.js --fix",
+				"build": "./bin/build.sh",
+				"buildtest": "./bin/build.sh",
+				"prelint": "npm run buildtest",
+				"lint": "./node_modules/.bin/eslint ./src/**/**/*.js",
+				"pretest": "npm run lint",
+				"cypress": "node ./test/cypress.env.js",
+				"test": "_ENV_NODE_='liquid' ./node_modules/.bin/mocha --reporter spec ./test/node",
 				"docs": "./node_modules/.bin/jsdoc -c jsdoc.json",
-				"cover": "nyc npm test"
+				"cover": "_ENV_NODE_='liquid' nyc npm run test"
 		},
 		"repository": {
 				"type": "git",
@@ -43,6 +46,8 @@
 				"babel-preset-env": "^1.7.0",
 				"chai": "^4.2.0",
 				"chai-as-promised": "*",
+				"connect": "^3.7.0",
+				"cypress": "^4.2.0",
 				"electron": "^8.1.1",
 				"electron-mocha": "^8.2.1",
 				"eslint": "^6.8.0",
@@ -52,13 +57,14 @@
 				"jsdoc": "^3.6.3",
 				"jsdom": "^16.2.1",
 				"jsdom-global": "^3.0.2",
-				"mocha": "^7.1.0",
+				"mocha": "^7.1.1",
 				"mocha-webpack": "^1.1.0",
-				"mongodb-memory-server": "^6.3.3",
+				"mongodb-memory-server": "^6.4.0",
 				"nyc": "^15.0.0",
 				"regenerator-runtime": "^0.13.5",
 				"request": "^2.88.2",
-				"retire": "^2.0.3",
+				"retire": "^2.1.1",
+				"serve-static": "^1.14.1",
 				"should": "^13.2.3"
 		},
 		"nyc": {
