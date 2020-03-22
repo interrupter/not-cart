@@ -5,12 +5,12 @@
 		"main": "index.js",
 		"scripts": {
 				"build": "./bin/build.sh",
-				"buildtest": "./bin/build.sh",
-				"prelint": "npm run buildtest",
+				"buildtest": "ENV=test ./bin/build.sh",
+				"prelint": "npm run build",
 				"lint": "./node_modules/.bin/eslint ./src/**/**/*.js",
-				"pretest": "npm run lint",
-				"cypress": "node ./test/cypress.env.js",
-				"test": "_ENV_NODE_='liquid' ./node_modules/.bin/mocha --reporter spec ./test/node",
+				"pretest": "npm run buildtest",
+				"cypress": "NODE_ENV=test node ./test/cypress.env.js",
+				"test": "_ENV_NODE_='liquid' ./node_modules/.bin/mocha --reporter spec ./test/node && npm run cypress",
 				"docs": "./node_modules/.bin/jsdoc -c jsdoc.json",
 				"cover": "_ENV_NODE_='liquid' nyc npm run test"
 		},
@@ -38,11 +38,16 @@
 				"not-node": "^3.3.47",
 				"not-one-time-code": "^0.1.1",
 				"uuidv4": "*",
-				"validator": "^12.2.0"
+				"validator": "^13.0.0"
 		},
 		"devDependencies": {
-				"@babel/preset-env": "^7.8.7",
+				"@babel/core": "^7.9.0",
+				"@babel/plugin-transform-arrow-functions": "^7.8.3",
+				"@babel/plugin-transform-runtime": "^7.9.0",
+				"@babel/preset-env": "^7.9.0",
+				"@cypress/code-coverage": "^1.14.0",
 				"babel-jest": "^25.1.0",
+				"babel-plugin-istanbul": "^6.0.0",
 				"babel-preset-env": "^1.7.0",
 				"chai": "^4.2.0",
 				"chai-as-promised": "*",
@@ -53,19 +58,26 @@
 				"eslint": "^6.8.0",
 				"expect": "^25.1.0",
 				"ink-docstrap": "*",
+				"istanbul-lib-coverage": "^3.0.0",
 				"jest": "^25.1.0",
 				"jsdoc": "^3.6.3",
 				"jsdom": "^16.2.1",
 				"jsdom-global": "^3.0.2",
 				"mocha": "^7.1.1",
 				"mocha-webpack": "^1.1.0",
-				"mongodb-memory-server": "^6.4.0",
+				"mongodb-memory-server": "^6.4.1",
+				"ncp": "^2.0.0",
 				"nyc": "^15.0.0",
 				"regenerator-runtime": "^0.13.5",
 				"request": "^2.88.2",
-				"retire": "^2.1.1",
+				"retire": "^2.1.2",
+				"rollup-plugin-babel": "^4.4.0",
+				"rollup-plugin-commonjs": "^10.1.0",
+				"rollup-plugin-istanbul": "^2.0.1",
+				"rollup-plugin-node-resolve": "^5.2.0",
 				"serve-static": "^1.14.1",
-				"should": "^13.2.3"
+				"should": "^13.2.3",
+				"whatwg-fetch": "^3.0.0"
 		},
 		"nyc": {
 				"include": [
@@ -73,13 +85,14 @@
 						"src/**/**/**.js"
 				],
 				"exclude": [
-						"test/**/**/**/**.js"
+						"test/**/**/**/**.js",
+						"node_modules/"
 				],
 				"reporter": [
 						"html"
 				],
-				"check-coverage": true,
-				"per-file": true,
+				"check-coverage": false,
+				"per-file": false,
 				"lines": 95,
 				"statements": 95,
 				"functions": 95,

@@ -1,0 +1,62 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>Cart UI testing</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="/dist/css/cart.css">
+        <script type="module" src="/fetch.xhr.js"></script>
+    </head>
+    <body>
+      <button class="addToCart">Добавить в корзину</button>
+        <script src="/dist/notCart.js"></script>
+        <script>
+        window.CART = new notCart({local: true});
+        const TESTIES = [{
+          id: 1,
+          title: 'Image 1',
+          image: '/assets/o-da-vinci.jpg',
+          description: 'sdfasdfasdf sadf sadf sad fsad fsad fsad f',
+          price: 100.99
+        },
+        {
+          id: 2,
+          title: 'Image 2',
+          image: '/assets/o-ieronim-boskh.jpg',
+          description: 'sdfasdfasdf sadf sadf sad fsad fsad fsad f',
+          price: 200.99
+        },
+        {
+          id: 3,
+          title: 'Image 3',
+          image: '/assets/o-piter-breygel.jpg',
+          description: 'sdfasdfasdf sadf sadf sad fsad fsad fsad f',
+          price: 300.99
+        },
+        {
+          id: 4,
+          title: 'Image 4',
+          image: '/assets/o-yan-vermeer.jpg',
+          description: 'sdfasdfasdf sadf sadf sad fsad fsad fsad f',
+          price: 400.99
+        }];
+        var IDs = 5;
+        TESTIES.forEach((good)=>{
+          window.CART.add(good);
+        });
+        window.CART.showList();
+        document.querySelector('button.addToCart').addEventListener('click',()=>{
+          window.CART.add({
+            id: IDs,
+            title: 'Image '+IDs,
+            image: '/assets/o-yan-vermeer.jpg',
+            description: 'sdfasdfasdf sadf sadf sad fsad fsad fsad f',
+            price: 100.99+(Math.random()*100*IDs)
+          }).then(()=>{window.CART.updateList();});
+          IDs++;
+        });
+        </script>
+    </body>
+</html>
