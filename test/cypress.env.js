@@ -1,13 +1,15 @@
 const connect = require('connect'),
   path = require('path'),
   serveStatic = require('serve-static'),
-  ncp = require('ncp').ncp,
+
   exec = require('child_process').exec;
+
+let type = process.env.TEST_TYPE;
 
 function runTests(){
   	return new Promise((res, rej) => {
   		try {
-  			exec(`./node_modules/.bin/cypress open`, {}, (err, stdout) => {
+  			exec(`./node_modules/.bin/cypress ${type}`, {}, (err, stdout) => {
           console.log(stdout);
   					if (err) {
   						rej(err);
@@ -28,13 +30,7 @@ function startServer(){
   });
 }
 
-ncp(path.join(__dirname,'../dist'), path.join(__dirname,'browser/dist'), function (err) {
- if (err) {
-   console.error(err);
-   process.exit(1);
- }
- startServer();
-});
+startServer();
 
 runTests().then(()=>{
   process.exit(0);

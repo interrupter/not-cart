@@ -1,0 +1,247 @@
+.cart-icon-inline {}
+
+:root {
+  --color-primary: #4a90e2;
+  --color-secondary: #e2844a;
+  --color-disabled: #ccc;
+  --font-primary: sans-serif;
+  --text-base-size: 1em;
+  --text-scale-ratio: 1.2;
+  --text-xs: calc(1em/var(--text-scale-ratio)/var(--text-scale-ratio));
+  --text-sm: calc(var(--text-xs)*var(--text-scale-ratio));
+  --text-md: calc(var(--text-sm)*var(--text-scale-ratio)*var(--text-scale-ratio));
+  --text-lg: calc(var(--text-md)*var(--text-scale-ratio));
+  --text-xl: calc(var(--text-lg)*var(--text-scale-ratio));
+  --text-xxl: calc(var(--text-xl)*var(--text-scale-ratio));
+  --text-xxxl: calc(var(--text-xxl)*var(--text-scale-ratio));
+  --body-line-height: 1.4;
+  --heading-line-height: 1.2;
+  --font-primary-capital-letter: 1;
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background-color: #FFF;
+  font-family: 'Roboto', sans-serif;
+}
+
+.shopping-cart {
+  width: 80vw;
+  max-height: 100vh;
+  position: relative;
+  margin: auto;
+  margin-top: 5vh;
+  background: #FFFFFF;
+  box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.10);
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+}
+
+.title,.empty-cart {
+  height: 60px;
+  border-bottom: 1px solid #E1E8EE;
+  padding: 20px 30px;
+  color: #5E6977;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+
+
+#cart-overlay *[type=button]{
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.close-btn,
+.delete-btn,
+.like-btn {
+  display: inline-block;
+  Cursor: pointer;
+}
+
+.close-btn {
+  width: 18px;
+  height: 17px;
+  background: url('/assets/cart/img/close-icn.svg') no-repeat center;
+  position: absolute;
+  right: 25px;
+  top: 25px;
+}
+
+.delete-btn {
+  width: 18px;
+  height: 17px;
+  background: url('/assets/cart/img/delete-icn.svg') no-repeat center;
+}
+
+.like-btn {
+  position: absolute;
+  top: 9px;
+  left: 15px;
+  background: url('/assets/cart/img/twitter-heart.png');
+  width: 60px;
+  height: 60px;
+  background-size: 2900%;
+  background-repeat: no-repeat;
+}
+
+.is-active {
+  animation-name: animate;
+  animation-duration: .8s;
+  animation-iteration-count: 1;
+  animation-timing-function: steps(28);
+  animation-fill-mode: forwards;
+}
+
+@keyframes animate {
+  0%   { background-position: left;  }
+  50%  { background-position: right; }
+  100% { background-position: right; }
+}
+
+
+
+.total-shop-cart{
+  display: inline-block;
+  margin-left: 4em;
+}
+
+
+.cart-list span[type=button]{
+  background-color: var(--color-primary);
+  background-repeat: no-repeat;
+  background-position: center;
+  content: " ";
+  cursor: pointer;
+  color:var(--color-primary);
+}
+
+.cart-list .minus-btn{
+  background-image: url(/assets/cart/img/minus.svg);
+}
+
+.cart-list .plus-btn{
+  background-image: url(/assets/cart/img/plus.svg);
+}
+
+.cart-list button:focus,
+.cart-list input:focus {
+  outline:0;
+}
+
+
+.cart-order-btn{
+  background-color: var(--color-primary);
+  padding: calc(var(--text-base-size)/3);
+  border-color: var(--color-primary);
+  color: #fff;
+  font-size: 1.2em;
+  cursor: pointer;
+  margin-left: 2em;
+}
+
+.cart-order-btn.disabled{
+  background-color: var(--color-disabled);
+}
+
+
+.cart-list{
+  display:  block;
+  overflow-y: scroll;
+  height: 85vh;
+}
+
+@media (max-width: 800px) {
+  .shopping-cart {
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin-top:0px;
+  }
+  .item {
+    height: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .image,
+  .quantity,
+  .cart-item-title,
+  .description {
+    width: 100%;
+    text-align: center;
+    margin: 6px 0;
+  }
+  .cart-item-title{
+    font-size: 1.2em;
+  }
+  .total-price{
+    font-size: 1.2em;
+  }
+  .buttons {
+    margin-right: 0px;
+    padding-top: 0px;
+  }
+  .title{
+    height: 100px;
+
+  }
+  .title .total-shop-cart{
+    margin-left: 0px;
+    display: block;
+  }
+
+  .close-btn{
+    position: absolute;
+    right: 5px;
+    top: 15px;
+  }
+}
+
+@keyframes animateOpacity {
+  0%   { opacity: 0;  }
+  50%  { opacity: 0.7; }
+  100% { opacity: 1; }
+}
+
+.cart-item-property span{
+  display: inline-block;
+}
+
+@media (min-width: 1201px) {
+  .shopping-cart.small {
+    width: 40%;
+  }
+}
+
+
+	.totalPrice, .totalWeight{
+	  font-weight: bold;
+	  font-size: 1.2em;
+	}
+
+  #cart-overlay {
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		width: 100vw;
+		height: 100vh;
+		margin: 0px;
+		background-color: #CCC;
+		z-index: 1000;
+		display: block;
+		opacity: 1;
+		overflow: hidden;
+	}

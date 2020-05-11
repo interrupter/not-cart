@@ -1,10 +1,11 @@
 describe("notCart browser", function() {
   it("defined", function() {
     expect(notCart).to.be.ok;
+    expect(notCart.notCart).to.be.ok;
   });
 
   it("constructable", function() {
-    let cart = new notCart({
+    let cart = new notCart.notCart({
       local: true
     });
     expect(cart).to.be.ok;
@@ -12,7 +13,7 @@ describe("notCart browser", function() {
 
   describe("notCart setters/getters", function() {
     it("initCartItem", function() {
-      let cart = new notCart({
+      let cart = new notCart.notCart({
         local: true
       });
       let item = {title:'id', id: 1};
@@ -24,7 +25,7 @@ describe("notCart browser", function() {
     });
 
     it("getSaveURL, getLoadURL, getOrderURL - default", function() {
-      let cart = new notCart({
+      let cart = new notCart.notCart({
         local: true
       });
       expect(cart.getAddURL()).to.be.eql('/api/cart/add');
@@ -34,7 +35,7 @@ describe("notCart browser", function() {
     });
 
     it("getSaveURL, getLoadURL, getOrderURL - custom", function() {
-      let cart = new notCart({
+      let cart = new notCart.notCart({
         local: true,
         addUrl: '/add',
         saveUrl: '/save',
@@ -54,7 +55,7 @@ describe("notCart browser", function() {
         id: 2,
         title: 'spaghetti'
       }]));
-      let cart = new notCart({
+      let cart = new notCart.notCart({
         local: true
       });
       expect(cart.content).to.be.ok;
@@ -66,7 +67,7 @@ describe("notCart browser", function() {
 
     it('loading data from localStorage, missformed JSON', () => {
       window.localStorage.setItem('cart', '<ASdfasdf>sadf');
-      let cart = new notCart({
+      let cart = new notCart.notCart({
         local: true
       });
       expect(cart.content).to.be.ok;
@@ -77,7 +78,7 @@ describe("notCart browser", function() {
 
     it('saving data to localStorage', () => {
       window.localStorage.setItem('cart', '');
-      let cart = new notCart({
+      let cart = new notCart.notCart({
         local: true
       });
       expect(cart.content).to.be.ok;
@@ -99,7 +100,7 @@ describe("notCart browser", function() {
 
     it('saving data to localStorage, circular cart content', (done) => {
       window.localStorage.setItem('cart', '');
-      let cart = new notCart({
+      let cart = new notCart.notCart({
         local: true
       });
       expect(cart.content).to.be.ok;
@@ -118,7 +119,7 @@ describe("notCart browser", function() {
 
     it('saving data to localStorage from save', () => {
       window.localStorage.setItem('cart', '');
-      let cart = new notCart({
+      let cart = new notCart.notCart({
         local: true
       });
       expect(cart.content).to.be.ok;
@@ -141,7 +142,7 @@ describe("notCart browser", function() {
 
 	describe("server storage", function(done) {
     it('loading data from serverStorage, success', (done) => {
-      let cart = new notCart({
+      let cart = new notCart.notCart({
         local: false
       });
       cart.error = done;
@@ -153,7 +154,7 @@ describe("notCart browser", function() {
 		});
 
 		it('loading data from serverStorage, failure', (done) => {
-      let cart = new notCart({
+      let cart = new notCart.notCart({
         local: false,
         loadUrl: '/fuckup.url',
       });
@@ -168,7 +169,7 @@ describe("notCart browser", function() {
 		});
 
 		it('saving data to serverStorage, success', (done) => {
-      let cart = new notCart({
+      let cart = new notCart.notCart({
         local: false
       });
       cart.error = done;
@@ -180,7 +181,7 @@ describe("notCart browser", function() {
 		});
 
 		it('saving data to serverStorage, failure', (done) => {
-      let cart = new notCart({
+      let cart = new notCart.notCart({
         local: false,
         saveUrl: '/fuckup.url',
       });
@@ -195,7 +196,7 @@ describe("notCart browser", function() {
 		});
 
     it('ordering, success', (done) => {
-      let cart = new notCart({
+      let cart = new notCart.notCart({
         local: false
       });
       cart.error = done;
@@ -207,7 +208,7 @@ describe("notCart browser", function() {
 		});
 
 		it('ordering, failure', (done) => {
-      let cart = new notCart({
+      let cart = new notCart.notCart({
         local: false,
         orderUrl: '/fuckup.url',
       });
@@ -226,7 +227,7 @@ describe("notCart browser", function() {
 
   describe("notCart item operations", function() {
     it("add - local", function() {
-      let cart = new notCart({
+      let cart = new notCart.notCart({
         local: true
       });
       cart.add({id:333, title: 'are we happy?'});
@@ -235,7 +236,7 @@ describe("notCart browser", function() {
     });
 
     it("add - server", function(done) {
-      let cart = new notCart({
+      let cart = new notCart.notCart({
         local: false,
         loadUrl: '/api/cart/loadAfterAdd'
       });
@@ -250,7 +251,7 @@ describe("notCart browser", function() {
 
     it("findById", function() {
       window.localStorage.setItem('cart', '');
-      let cart = new notCart({
+      let cart = new notCart.notCart({
         local: true
       });
       cart.content.push({
@@ -290,7 +291,7 @@ describe("notCart browser", function() {
 
     it("changeQuantity", function() {
       window.localStorage.setItem('cart', '');
-      let cart = new notCart({
+      let cart = new notCart.notCart({
         local: true
       });
       cart.content.push({
@@ -309,7 +310,7 @@ describe("notCart browser", function() {
 
     it("list", function() {
       window.localStorage.setItem('cart', '');
-      let cart = new notCart({
+      let cart = new notCart.notCart({
         local: true
       });
       cart.content.push(1);
@@ -321,14 +322,15 @@ describe("notCart browser", function() {
 
     it("remove", function() {
       window.localStorage.setItem('cart', '');
-      let cart = new notCart({
+      let cart = new notCart.notCart({
         local: true
       });
       cart.content.push({
         id: "item-test-id-3",
         item: {
           id: 44477,
-          title: 'test 1'
+          title: 'test 1',
+          properties: []
         },
         quantity: 16
       });
@@ -355,7 +357,7 @@ describe("notCart browser", function() {
 
 
     it("clear", function() {
-      let cart = new notCart({
+      let cart = new notCart.notCart({
         local: true
       });
       cart.content = ['1','2','3','4'];
@@ -363,7 +365,7 @@ describe("notCart browser", function() {
     });
 
     it("getOrderData", function() {
-      let cart = new notCart({
+      let cart = new notCart.notCart({
         local: true
       });
       cart.content = ['test'];

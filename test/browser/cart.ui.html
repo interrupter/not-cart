@@ -1,62 +1,202 @@
 <!doctype html>
 <html class="no-js" lang="">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Cart UI testing</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="/dist/css/cart.css">
-        <script type="module" src="/fetch.xhr.js"></script>
-    </head>
-    <body>
-      <button class="addToCart">Добавить в корзину</button>
-        <script src="/dist/notCart.js"></script>
-        <script>
-        window.CART = new notCart({local: true});
-        const TESTIES = [{
-          id: 1,
-          title: 'Image 1',
-          image: '/assets/o-da-vinci.jpg',
-          description: 'sdfasdfasdf sadf sadf sad fsad fsad fsad f',
-          price: 100.99
-        },
-        {
-          id: 2,
-          title: 'Image 2',
-          image: '/assets/o-ieronim-boskh.jpg',
-          description: 'sdfasdfasdf sadf sadf sad fsad fsad fsad f',
-          price: 200.99
-        },
-        {
-          id: 3,
-          title: 'Image 3',
-          image: '/assets/o-piter-breygel.jpg',
-          description: 'sdfasdfasdf sadf sadf sad fsad fsad fsad f',
-          price: 300.99
-        },
-        {
-          id: 4,
-          title: 'Image 4',
-          image: '/assets/o-yan-vermeer.jpg',
-          description: 'sdfasdfasdf sadf sadf sad fsad fsad fsad f',
-          price: 400.99
-        }];
-        var IDs = 5;
-        TESTIES.forEach((good)=>{
-          window.CART.add(good);
-        });
-        window.CART.showList();
-        document.querySelector('button.addToCart').addEventListener('click',()=>{
-          window.CART.add({
-            id: IDs,
-            title: 'Image '+IDs,
-            image: '/assets/o-yan-vermeer.jpg',
-            description: 'sdfasdfasdf sadf sadf sad fsad fsad fsad f',
-            price: 100.99+(Math.random()*100*IDs)
-          }).then(()=>{window.CART.updateList();});
-          IDs++;
-        });
-        </script>
-    </body>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>Cart UI testing</title>
+	<meta name="description" content="">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,600,700">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Mono">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="/assets/cart/notCart.css">
+	<link rel="stylesheet" href="/assets/order/notOrder.css">
+	<script type="module" src="/fetch.xhr.js"></script>
+	<style>
+		.tile {
+			display: block;
+			position: relative;
+			width: 90vw;
+			height: 20vh;
+			margin: 10px;
+		}
+
+		.tile img {
+			display: inline-block;
+			max-height: 20vh;
+			margin: auto;
+			margin-top: 0px;
+			margin-bottom: 5vh;
+		}
+
+		.tile button {
+			display: inline-block;
+			position: absolute;
+			top: 7vh;
+			right: 5vw;
+			font-size: 1.3em;
+		}
+
+		/* CART icon */
+
+
+	</style>
+</head>
+
+<body>
+	<button class="addToCart">Добавить в корзину</button>
+	<button class="showCart">Показать корзину</button>
+	<script src="/assets/order/notOrder.js"></script>
+	<script src="/assets/cart/notCart.js"></script>
+	<script>
+		document.addEventListener('DOMContentLoaded', () => {
+
+			window.CART = new notCart.notCart({
+				local: true,
+				descriptionStyle: 'plain',
+				onOrder: (data) => {notOrder.launchOrderForm({order: data}); }
+			});
+
+			const TESTIES = [{
+					id: 1,
+					title: 'Image 1',
+					image: '/assets/o-da-vinci.jpg',
+					url: '/',
+					description: 'sdfasdfasdf sadf sadf sad fsad fsad fsad f',
+					properties: [{
+							title: 'prop 1',
+							value: 'value 4'
+						},
+						{
+							title: 'prop 2',
+							value: 'value 2'
+						}
+					],
+					price: 10099
+				},
+				{
+					id: 2,
+					title: 'Image 2',
+					image: '/assets/o-ieronim-boskh.jpg',
+					url: '/',
+					description: 'sdfasdfasdf sadf sadf sad fsad fsad fsad f',
+					properties: [{
+						title: 'prop 1',
+						value: 'value 1'
+					}],
+					price: 20099
+				},
+				{
+					id: 3,
+					title: 'Image 3',
+					image: '/assets/o-piter-breygel.jpg',
+					url: '/',
+					description: 'sdfasdfasdf sadf sadf sad fsad fsad fsad f',
+					properties: [{
+							title: 'prop 1',
+							value: 'value 4'
+						},
+						{
+							title: 'prop 2',
+							value: 'value 2'
+						}
+					],
+					price: 30099
+				},
+				{
+					id: 4,
+					title: 'Image 4',
+					image: '/assets/o-yan-vermeer.jpg',
+					url: '/',
+					description: 'sdfasdfasdf sadf sadf sad fsad fsad fsad f',
+					properties: [{
+							title: 'prop 1',
+							value: 'value 4'
+						},
+						{
+							title: 'prop 2',
+							value: 'value 2'
+						}
+					],
+					price: 40099
+				}
+			];
+			var IDs = 5;
+			let testList = document.body.querySelector('#test-list');
+			let str = '';
+			TESTIES.forEach((good, id) => {
+				window.CART.add(good);
+				str +=
+					`<div class="tile"><img src="${good.image}"/><button data-index="${id}" data-image="${good.image}" data-title="${good.title}" data-url="${good.url}" data-id="${good.id}" data-description="${good.description}" data-price="${good.price}" type="button">Купить</button></div>`;
+			});
+			testList.innerHTML = str;
+			document.querySelector('button.addToCart').addEventListener('click', () => {
+				window.CART.add({
+					id: IDs,
+					title: 'Image ' + IDs,
+					image: '/assets/o-yan-vermeer.jpg',
+					description: 'sdfasdfasdf sadf sadf sad fsad fsad fsad f',
+					properties: [{
+							title: 'prop 1',
+							value: 'value 4'
+						},
+						{
+							title: 'prop 2',
+							value: 'value 2'
+						},
+						{
+								title: 'prop 1 wi th long title',
+								value: 'value 4 - with long definition'
+							},
+							{
+								title: 'prop 2 sd asdf asdf ',
+								value: 'value 2 sdf asdf asdf asd'
+							},
+							{
+									title: 'prop 1',
+									value: 'value 4'
+								},
+								{
+									title: 'prop 2',
+									value: 'value 2'
+								}
+
+					],
+					price: 10099 + Math.floor(Math.random() * 100 * IDs)
+				});
+				IDs++;
+			});
+			document.querySelector('button.showCart').addEventListener('click', () => {
+				window.CART.showList();
+			});
+			Array.from(document.querySelectorAll('.tile button')).forEach((btnAdd) => {
+				btnAdd.addEventListener('click', (e) => {
+					let itemData = e.currentTarget.dataset;
+					window.CART.add({
+						id: parseInt(itemData.id),
+						url: itemData.url,
+						title: itemData.title,
+						image: itemData.image,
+						description: itemData.description,
+						properties: TESTIES[parseInt(itemData.index)].properties,
+						price: itemData.price
+					});
+				});
+			})
+/*
+			setInterval(()=>{
+				let el = document.querySelector('.cart-icon-count');
+				if(el){
+					el.classList.add('updated');
+					setTimeout(()=>{el.classList.remove('updated')}, 600);
+				}
+			} , 2000);
+	*/
+		});
+
+	</script>
+	<div id="test-list"></div>
+</body>
+
 </html>
