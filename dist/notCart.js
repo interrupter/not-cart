@@ -2675,9 +2675,9 @@ var notCart = (function (exports) {
     			span1 = element("span");
     			t2 = text(t2_value);
     			t3 = space();
-    			attr(span0, "class", "cart-item-property-title svelte-1y0758d");
-    			attr(span1, "class", "cart-item-property-value svelte-1y0758d");
-    			attr(div, "class", "cart-item-property svelte-1y0758d");
+    			attr(span0, "class", "cart-item-property-title svelte-5928yh");
+    			attr(span1, "class", "cart-item-property-value svelte-5928yh");
+    			attr(div, "class", "cart-item-property svelte-5928yh");
     		},
     		m(target, anchor) {
     			insert(target, div, anchor);
@@ -2832,20 +2832,20 @@ var notCart = (function (exports) {
     			create_component(iconbutton2.$$.fragment);
     			t10 = space();
     			div5 = element("div");
-    			attr(div0, "class", "buttons item-remove-btn svelte-1y0758d");
+    			attr(div0, "class", "buttons item-remove-btn svelte-5928yh");
     			attr(a, "href", a_href_value = /*data*/ ctx[0].item.url);
-    			attr(a, "class", "svelte-1y0758d");
-    			attr(div1, "class", "cart-item-title svelte-1y0758d");
+    			attr(a, "class", "svelte-5928yh");
+    			attr(div1, "class", "cart-item-title svelte-5928yh");
     			if (img.src !== (img_src_value = /*data*/ ctx[0].item.image)) attr(img, "src", img_src_value);
     			attr(img, "alt", img_alt_value = /*data*/ ctx[0].item.title);
-    			attr(img, "class", "svelte-1y0758d");
-    			attr(div2, "class", "image svelte-1y0758d");
-    			attr(span0, "class", "cart-item-description svelte-1y0758d");
-    			attr(div3, "class", "description svelte-1y0758d");
-    			attr(span1, "class", "number svelte-1y0758d");
-    			attr(div4, "class", "quantity svelte-1y0758d");
-    			attr(div5, "class", "total-price svelte-1y0758d");
-    			attr(div6, "class", "item svelte-1y0758d");
+    			attr(img, "class", "svelte-5928yh");
+    			attr(div2, "class", "image svelte-5928yh");
+    			attr(span0, "class", "cart-item-description svelte-5928yh");
+    			attr(div3, "class", "description svelte-5928yh");
+    			attr(span1, "class", "number svelte-5928yh");
+    			attr(div4, "class", "quantity svelte-5928yh");
+    			attr(div5, "class", "total-price svelte-5928yh");
+    			attr(div6, "class", "item svelte-5928yh");
     			attr(div6, "data-id", div6_data_id_value = /*data*/ ctx[0].id);
     		},
     		m(target, anchor) {
@@ -5612,6 +5612,7 @@ var notCart = (function (exports) {
             if (Array.isArray(cartData)) {
               this.content = cartData;
             }
+            this.updateUICounters();
             return;
           } catch (e) {
             this.content = [];
@@ -5634,6 +5635,7 @@ var notCart = (function (exports) {
             });
             let cartRaw = JSON.stringify(this.content);
             window.localStorage.setItem('cart', cartRaw);
+            this.updateUICounters();
             return Promise.resolve();
           } catch (e) {
             this.error(e);
@@ -5803,6 +5805,7 @@ var notCart = (function (exports) {
       loadFromServer() {
         return this.getData(this.getLoadURL()).then((data) => {
           this.content = data;
+          this.updateUICounters();
           return data;
         }).catch(this.error);
       }

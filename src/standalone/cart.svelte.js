@@ -78,6 +78,7 @@ class notCart {
         if (Array.isArray(cartData)) {
           this.content = cartData;
         }
+        this.updateUICounters();
         return;
       } catch (e) {
         this.content = [];
@@ -100,6 +101,7 @@ class notCart {
         });
         let cartRaw = JSON.stringify(this.content);
         window.localStorage.setItem('cart', cartRaw);
+        this.updateUICounters();
         return Promise.resolve();
       } catch (e) {
         this.error(e);
@@ -269,6 +271,7 @@ class notCart {
   loadFromServer() {
     return this.getData(this.getLoadURL()).then((data) => {
       this.content = data;
+      this.updateUICounters();
       return data;
     }).catch(this.error);
   }
