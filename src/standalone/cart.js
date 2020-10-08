@@ -1,6 +1,3 @@
-//import "../styles/common/common.css";
-import "./cart.scss";
-
 const OPT_DEFAULT_ANIMATION_DURATION = 600;
 const SELECTOR_CART_OVERLAY_ID = 'cart-overlay';
 const STR_CART_CONTENT_LIST_TITLE = 'Ваша корзина';

@@ -2,32 +2,14 @@
 	let overlay;
 
 	import NotCartItem from './cart.item.svelte';
-
 	import {
-		OverlayComponentStandalone
-	} from 'not-overlay';
+		UIOverlay,
+		UIButton
+	} from 'not-bulma';
 
-	import {
-		Icon as CommonIcon
-	} from '@smui/common';
-	import IconButton, {
-		Icon
-	} from '@smui/icon-button';
-	import Button, {
-		Label
-	} from '@smui/button';
-	import Textfield from '@smui/textfield';
-	import HelperText from '@smui/textfield/helper-text';
-	import Paper, {
-		Title,
-		Subtitle,
-		Content
-	} from '@smui/paper';
-
-	import {
-		createEventDispatcher
-	} from 'svelte';
+	import {createEventDispatcher} from 'svelte';
 	let dispatch = createEventDispatcher();
+
 	export let totalQuantity = 0;
 	export let totalPrice = 0;
 
@@ -100,32 +82,28 @@
 	$: show, updateTotals();
 </script>
 
-<OverlayComponentStandalone on:reject="{overlayClosed}" bind:this={overlay} bind:show={show} {closeOnClick} {closeButton}>
+<UIOverlay on:reject="{overlayClosed}" bind:this={overlay} bind:show={show} {closeOnClick} {closeButton}>
 	<div class="cart-list-items-paper">
-		<Paper class="some-selector">
-			<Title>{title}</Title>
-			<Subtitle>Всего товаров: {totalQuantity}, общей стоимостью: <span class="total-price">{@html totalPrice}</span></Subtitle>
-			<Content>
+		<div class="box">
+			<h2 class="title is-2">{title}</h2>
+			<h3 class="subtitle -s3">Всего товаров: {totalQuantity}, общей стоимостью: <span class="total-price">{@html totalPrice}</span></h3>
+			<div class="content">
 				<div class="cart-list-items-content">
 					{#each content as item}
 					<NotCartItem bind:data="{item}" on:quantity.change={onItemQuantityChange} on:item.remove={onItemRemove} />
 					{/each}
 				</div>
-				<div class="buttons-row">
-					<Button on:click={closeCart} variant="outlined" color="secondary" class="cart-form-close">
-						<Label>Закрыть</Label>
-					</Button>
-					<Button on:click={startOrder} disabled={isEmpty} variant="raised" color="primary" class="cart-form-order pull-right">
-						<Label>Заказать</Label>
-					</Button>
+				<div class="buttons is-grouped is-centered">
+					<UIButton action={closeCart} title="Закрыть" color="secondary" classes="cart-form-close" />
+					<UIButton action={startOrder} title="Заказать" disabled={isEmpty} raised={true} color="primary" classes="cart-form-order" />
 				</div>
-			</Content>
-		</Paper>
+			</div>
+		</div>
 	</div>
-</OverlayComponentStandalone>
+</UIOverlay>
 
 
-<style>	
+<style>
 	.cart-list-items-paper {
 		display: block;
 		height: 85vh;
@@ -135,6 +113,7 @@
 
 	.cart-list-items-content {
 		overflow-y: scroll;
+		overflow-x: hidden;
 		max-height: 50vh;
 	}
 

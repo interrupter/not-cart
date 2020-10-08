@@ -1,10 +1,6 @@
 <script>
-  import IconButton, {
-    Icon
-  } from '@smui/icon-button';
-  import {
-    createEventDispatcher
-  } from 'svelte';
+  import {UIButton} from "not-bulma";
+  import { createEventDispatcher } from 'svelte';
   let dispatch = createEventDispatcher();
 
   export let moneySign = '&#8381;';
@@ -43,15 +39,15 @@
   $: priceItem = formatPrice(parseFloat(data.item.price) * parseInt(data.quantity));
 </script>
 
-<div class="item" data-id="{data.id}">
-  <div class="buttons item-remove-btn">
-    <IconButton class="material-icons" on:click="{itemRemove}">close</IconButton>
+<div class="item columns" data-id="{data.id}">
+  <div class="column is-1 buttons item-remove-btn">
+    <UIButton action="{itemRemove}" icon="times-circle"></UIButton>
   </div>
-  <div class="cart-item-title"><a href="{data.item.url}">{data.item.title}</a></div>
-  <div class="image">
+  <div class="column is-3 cart-item-title"><a href="{data.item.url}">{data.item.title}</a></div>
+  <div class="column image is-2">
     <img src="{data.item.image}" alt="{data.item.title}" />
   </div>
-  <div class="description">
+  <div class="column description is-3">
     <span class="cart-item-description">{data.item.description}</span>
     {#each data.item.properties as item}
     <div class="cart-item-property">
@@ -60,12 +56,12 @@
     </div>
     {/each}
   </div>
-  <div class="quantity">
-    <IconButton class="material-icons minus-btn" on:click="{quantityMinus}">remove</IconButton>
-    <span class="number">{data.quantity}</span>
-    <IconButton class="material-icons plus-btn" on:click="{quantityPlus}">add</IconButton>
+  <div class="column quantity is-2">
+    <UIButton action="{quantityMinus}" classes="minus-btn" icon="minus"></UIButton>
+    <span class="number ml-1 mr-1">{data.quantity}</span>
+    <UIButton action="{quantityPlus}" classes="plus-btn" icon="plus"></UIButton>
   </div>
-  <div class="total-price">{@html priceItem}</div>
+  <div class="column total-price is-1">{@html priceItem}</div>
 </div>
 
 
@@ -112,7 +108,7 @@
 
   .cart-item-title {
     margin-top: 1em;
-    display: flex;    
+    display: flex;
     min-width: 135px;
     width: 30%;
   }
