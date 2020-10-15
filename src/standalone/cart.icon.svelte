@@ -1,18 +1,21 @@
 <script>
   export let count = 0;
   export let show = true;
-  import {createEventDispatcher} from 'svelte';
+  import {
+    createEventDispatcher
+  } from 'svelte';
   let dispatch = createEventDispatcher();
-  function dispatchClick(){
+
+  function dispatchClick() {
     dispatch('click', {});
   }
 </script>
 {#if show}
-  <div>
-    <a class="cart-icon-fixed" on:click={dispatchClick}>
-      <span class="cart-icon-count">{count}</span>
-    </a>
-  </div>
+<div>
+  <a class="cart-icon-fixed" on:click={dispatchClick}>
+    <span class="cart-icon-count">{count}</span>
+  </a>
+</div>
 {/if}
 <style>
   .cart-icon-fixed {
@@ -24,21 +27,19 @@
     overflow: visible;
     cursor: pointer;
     -webkit-user-select: none;
-   -moz-user-select: none;
-   -ms-user-select: none;
-   user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
     bottom: 40px;
     position: fixed;
     bottom: 20px;
     right: 5%;
-    background-color: #fcfcfc;
     border-radius: 10px;
     border-color: none;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     /* Параметры тени */
     padding: 10px;
-    background: url(/assets/cart/img/cd-icons-cart-close.svg) no-repeat;
-    background-position: center;
+    background: #fcfcfc url(/assets/cart/img/cd-icons-cart-close.svg) no-repeat center;
     transition: -webkit-transform .2s;
     transition: transform .2s;
     transition: transform .2s, -webkit-transform .2s;
@@ -77,6 +78,7 @@
       height: calc(var(--text-sm)*2.5);
       width: calc(var(--text-sm)*2.5);
     }
+
     50% {
       top: calc(var(--text-sm)*-3/2);
       right: calc(var(--text-sm)*-3/2);
@@ -84,6 +86,7 @@
       width: calc(var(--text-sm)*3);
       line-height: calc(var(--text-sm)*3);
     }
+
     to {
       top: calc(var(--text-sm)*-2.5/2);
       right: calc(var(--text-sm)*-2.5/2);
@@ -93,8 +96,7 @@
     }
   }
 
-  .cart-icon-count.updated{
-    animation: beat  0.6s 1 ease-in-out;
+  .cart-icon-count.updated {
+    animation: beat 0.6s 1 ease-in-out;
   }
-
 </style>
