@@ -93,10 +93,14 @@
 					url: '/',
 					description: 'sdfasdfasdf sadf sadf sad fsad fsad fsad f',
 					properties: [{
+							id: 1,
+							valId: 3,
 							title: 'prop 1',
 							value: 'value 4'
 						},
 						{
+							id: 2,
+							valId: 2,
 							title: 'prop 2',
 							value: 'value 2'
 						}
@@ -196,6 +200,18 @@
 
 	</script>
 	<div id="test-list"></div>
+	<div id="vertical-space-block">
+		empty block that will toggle on scroll;
+	</div>
+	<footer id="footer">
+		some copyrights
+	</footer>
+	<style>
+	#vertical-space-block{
+		display:block;
+		min-height: 2000px;
+	}
+	</style>
 </body>
 
 </html>

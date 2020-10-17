@@ -106,6 +106,10 @@ describe('notCart browser testing', function() {
     cy.get('div.cart-list-items-paper .item').should('not.exist');
 
     cy.get('div.cart-list-items-paper .cart-form-close').click();
+
+    cy.get('#footer').scrollIntoView();
+    cy.get('button.showCart').click();
+    cy.get('div.cart-list-items-paper').should('be.visible');
   });
 
 
