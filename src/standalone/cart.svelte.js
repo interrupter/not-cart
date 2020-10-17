@@ -121,7 +121,7 @@ class notCart {
 
   add(item) {
     if (this.isLocal()) {
-      let existed = this.findByProductId(item.id);
+      let existed = this.findSameProduct(item, true);
       if (existed) {
         this.changeQuantity(existed.id, existed.quantity + 1);
       } else {
@@ -142,13 +142,38 @@ class notCart {
     }
   }
 
-  findByProductId(id) {
-    for (let item of this.content) {
-      if (item.item.id == id) {
-        return item;
+  getPropsString(item){
+  	return JSON.stringify(item.properties);
+  }
+
+  findSameProduct(newItem, props = true){
+    let existing = this.findByProductId(newItem.id);
+    if(!existing){ return false; }
+    if(props){
+      let propsString = this.getPropsString(newItem);
+      for(let oldItem of existing){
+        if(propsString === this.getPropsString(oldItem.item)){
+          return oldItem;
+        }
       }
+    }else{
+      return props;
     }
     return false;
+  }
+
+  findByProductId(id){
+    let copies = [];
+    for (let item of this.content) {
+      if (item.item.id == id) {
+        copies.push(item);
+      }
+    }
+    if(copies.length === 0){
+      return false;
+    }else{
+      return copies;
+    }
   }
 
   findById(id) {

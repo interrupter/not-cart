@@ -135,11 +135,15 @@ class notCart {
 	findSameProduct(newItem, props = true){
 		let existing = this.findByProductId(newItem.id);
 		if(!existing){ return false; }
-		let propsString = this.getPropsString(newItem);
-		for(let oldItem of existing){
-			if(propsString === this.getPropsString(oldItem.item)){
-				return oldItem;
+		if(props){
+			let propsString = this.getPropsString(newItem);
+			for(let oldItem of existing){
+				if(propsString === this.getPropsString(oldItem.item)){
+					return oldItem;
+				}
 			}
+		}else{
+			return props;
 		}
 		return false;
 	}
