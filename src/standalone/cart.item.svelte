@@ -6,7 +6,7 @@
   import {
     createEventDispatcher
   } from 'svelte';
-  
+
   let dispatch = createEventDispatcher();
 
   export let moneySign = '&#8381;';
@@ -45,8 +45,8 @@
   $: priceItem = formatPrice(parseFloat(data.item.price) * parseInt(data.quantity));
 </script>
 
-<div class="item columns" data-id="{data.id}">
-  <div class="column is-1 buttons item-remove-btn">
+<div class="item columns mr-3" data-id="{data.id}">
+  <div class="column buttons item-remove-btn">
     <UIButton action="{itemRemove}" icon="times-circle"></UIButton>
   </div>
   <div class="column is-3 cart-item-title"><a href="{data.item.url}">{data.item.title}</a></div>
