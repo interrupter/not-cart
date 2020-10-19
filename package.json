@@ -1,6 +1,6 @@
 {
 		"name": "not-cart",
-		"version": "0.0.17",
+		"version": "0.0.18",
 		"description": "not-* family cart model and interface in not- environment",
 		"main": "index.js",
 		"scripts": {

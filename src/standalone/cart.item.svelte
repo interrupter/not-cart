@@ -51,7 +51,7 @@
   </div>
   <div class="column is-3 cart-item-title"><a href="{data.item.url}">{data.item.title}</a></div>
   <div class="column image is-2">
-    <img src="{data.item.image}" alt="{data.item.title}" />
+    <img src="{data.item.image.micro}" alt="{data.item.title}" />
   </div>
   <div class="column description is-3">
     <span class="cart-item-description">{data.item.description}</span>
