@@ -113,8 +113,7 @@
 
 	.cart-list-items-content {
 		overflow-y: scroll;
-		overflow-x: hidden;
-		max-height: 50vh;
+		max-height: 70vh;
 	}
 
 	@media (max-width:800px) {

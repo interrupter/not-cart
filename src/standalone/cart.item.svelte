@@ -92,7 +92,7 @@
   }
 
   .item {
-    padding: 20 px 30 px;
+    padding: 20px 30px;
     display: flex;
     border-bottom: 1px solid #E1E8EE;
   }
