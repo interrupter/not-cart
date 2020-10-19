@@ -106,6 +106,7 @@
   }
 
   .image img {
+    object-fit: contain;
     max-width: 5em;
     max-height: 5em;
   }
@@ -169,7 +170,6 @@
     height: calc(var(--text-base-size)*var(--text-scale-ratio)*2);
     width: calc(var(--text-base-size)*var(--text-scale-ratio)*2);
   }
-
 
   .total-price {
     width: 83px;
