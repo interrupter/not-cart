@@ -17,8 +17,10 @@
   } from 'svelte';
   let dispatch = createEventDispatcher();
 
-  function dispatchClick() {
+  function dispatchClick(e) {
+    e.preventDefault();
     dispatch('click', {});
+    return false;
   }
 </script>
 {#if show}
