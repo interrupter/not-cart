@@ -334,7 +334,8 @@ class notCart {
     this.ui.icon = new CartIconComponent({
       target: document.body,
       props:{
-        count: this.content.length
+        count: this.content.length,
+        animationDuration: this.getAnimationDuration(),
       }
     });
     this.ui.icon.$on('click', this.showList.bind(this));
@@ -358,6 +359,7 @@ class notCart {
 		let count = this.getCount();
     if(this.ui.icon){
       this.ui.icon.$set({count});
+      this.ui.icon.update();
     }
 	}
 

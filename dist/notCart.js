@@ -14740,7 +14740,7 @@ var notCart = (function (exports) {
     	return child_ctx;
     }
 
-    // (52:4) {#each data.item.properties as item}
+    // (58:4) {#each data.item.properties as item}
     function create_each_block$3(ctx) {
     	let div;
     	let span0;
@@ -14761,9 +14761,9 @@ var notCart = (function (exports) {
     			span1 = element("span");
     			t2 = text(t2_value);
     			t3 = space();
-    			attr(span0, "class", "cart-item-property-title svelte-1yh9b29");
-    			attr(span1, "class", "cart-item-property-value svelte-1yh9b29");
-    			attr(div, "class", "cart-item-property svelte-1yh9b29");
+    			attr(span0, "class", "cart-item-property-title svelte-obav0k");
+    			attr(span1, "class", "cart-item-property-value svelte-obav0k");
+    			attr(div, "class", "cart-item-property svelte-obav0k");
     		},
     		m(target, anchor) {
     			insert(target, div, anchor);
@@ -14881,20 +14881,20 @@ var notCart = (function (exports) {
     			create_component(uibutton2.$$.fragment);
     			t10 = space();
     			div5 = element("div");
-    			attr(div0, "class", "column is-1 buttons item-remove-btn svelte-1yh9b29");
+    			attr(div0, "class", "column is-1 buttons item-remove-btn svelte-obav0k");
     			attr(a, "href", a_href_value = /*data*/ ctx[0].item.url);
-    			attr(a, "class", "svelte-1yh9b29");
-    			attr(div1, "class", "column is-3 cart-item-title svelte-1yh9b29");
+    			attr(a, "class", "svelte-obav0k");
+    			attr(div1, "class", "column is-3 cart-item-title svelte-obav0k");
     			if (img.src !== (img_src_value = /*data*/ ctx[0].item.image)) attr(img, "src", img_src_value);
     			attr(img, "alt", img_alt_value = /*data*/ ctx[0].item.title);
-    			attr(img, "class", "svelte-1yh9b29");
-    			attr(div2, "class", "column image is-2 svelte-1yh9b29");
-    			attr(span0, "class", "cart-item-description svelte-1yh9b29");
-    			attr(div3, "class", "column description is-3 svelte-1yh9b29");
-    			attr(span1, "class", "number ml-1 mr-1 svelte-1yh9b29");
-    			attr(div4, "class", "column quantity is-2 svelte-1yh9b29");
-    			attr(div5, "class", "column total-price is-1 svelte-1yh9b29");
-    			attr(div6, "class", "item columns svelte-1yh9b29");
+    			attr(img, "class", "svelte-obav0k");
+    			attr(div2, "class", "column image is-2 svelte-obav0k");
+    			attr(span0, "class", "cart-item-description svelte-obav0k");
+    			attr(div3, "class", "column description is-3 svelte-obav0k");
+    			attr(span1, "class", "number ml-1 mr-1 svelte-obav0k");
+    			attr(div4, "class", "column quantity is-2 svelte-obav0k");
+    			attr(div5, "class", "column total-price is-1 svelte-obav0k");
+    			attr(div6, "class", "item columns svelte-obav0k");
     			attr(div6, "data-id", div6_data_id_value = /*data*/ ctx[0].id);
     		},
     		m(target, anchor) {
@@ -15522,6 +15522,7 @@ var notCart = (function (exports) {
     	let a;
     	let span;
     	let t;
+    	let span_class_value;
     	let mounted;
     	let dispose;
 
@@ -15531,9 +15532,9 @@ var notCart = (function (exports) {
     			a = element("a");
     			span = element("span");
     			t = text(/*count*/ ctx[0]);
-    			attr(span, "class", "cart-icon-count");
+    			attr(span, "class", span_class_value = "cart-icon-count " + (/*cartUpdated*/ ctx[2] ? "updated" : "") + " svelte-1juoys4");
     			attr(a, "href", "");
-    			attr(a, "class", "cart-icon-fixed");
+    			attr(a, "class", "cart-icon-fixed svelte-1juoys4");
     		},
     		m(target, anchor) {
     			insert(target, div, anchor);
@@ -15542,12 +15543,16 @@ var notCart = (function (exports) {
     			append(span, t);
 
     			if (!mounted) {
-    				dispose = listen(a, "click", /*dispatchClick*/ ctx[2]);
+    				dispose = listen(a, "click", /*dispatchClick*/ ctx[3]);
     				mounted = true;
     			}
     		},
     		p(ctx, dirty) {
     			if (dirty & /*count*/ 1) set_data(t, /*count*/ ctx[0]);
+
+    			if (dirty & /*cartUpdated*/ 4 && span_class_value !== (span_class_value = "cart-icon-count " + (/*cartUpdated*/ ctx[2] ? "updated" : "") + " svelte-1juoys4")) {
+    				attr(span, "class", span_class_value);
+    			}
     		},
     		d(detaching) {
     			if (detaching) detach(div);
@@ -15596,6 +15601,20 @@ var notCart = (function (exports) {
     function instance$i($$self, $$props, $$invalidate) {
     	let { count = 0 } = $$props;
     	let { show = true } = $$props;
+    	let { animationDuration = 600 } = $$props;
+    	let cartUpdated = false;
+
+    	function update() {
+    		$$invalidate(2, cartUpdated = true);
+
+    		setTimeout(
+    			() => {
+    				$$invalidate(2, cartUpdated = false);
+    			},
+    			animationDuration
+    		);
+    	}
+
     	let dispatch = createEventDispatcher();
 
     	function dispatchClick() {
@@ -15605,15 +15624,26 @@ var notCart = (function (exports) {
     	$$self.$$set = $$props => {
     		if ("count" in $$props) $$invalidate(0, count = $$props.count);
     		if ("show" in $$props) $$invalidate(1, show = $$props.show);
+    		if ("animationDuration" in $$props) $$invalidate(4, animationDuration = $$props.animationDuration);
     	};
 
-    	return [count, show, dispatchClick];
+    	return [count, show, cartUpdated, dispatchClick, animationDuration, update];
     }
 
     class Cart_icon extends SvelteComponent {
     	constructor(options) {
     		super();
-    		init(this, options, instance$i, create_fragment$i, safe_not_equal, { count: 0, show: 1 });
+
+    		init(this, options, instance$i, create_fragment$i, safe_not_equal, {
+    			count: 0,
+    			show: 1,
+    			animationDuration: 4,
+    			update: 5
+    		});
+    	}
+
+    	get update() {
+    		return this.$$.ctx[5];
     	}
     }
 
@@ -15948,7 +15978,8 @@ var notCart = (function (exports) {
         this.ui.icon = new Cart_icon({
           target: document.body,
           props:{
-            count: this.content.length
+            count: this.content.length,
+            animationDuration: this.getAnimationDuration(),
           }
         });
         this.ui.icon.$on('click', this.showList.bind(this));
@@ -15972,6 +16003,7 @@ var notCart = (function (exports) {
     		let count = this.getCount();
         if(this.ui.icon){
           this.ui.icon.$set({count});
+          this.ui.icon.update();
         }
     	}
 

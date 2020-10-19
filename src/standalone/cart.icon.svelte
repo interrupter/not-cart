@@ -1,6 +1,17 @@
 <script>
   export let count = 0;
   export let show = true;
+  export let animationDuration = 600;
+
+  let cartUpdated = false;
+
+  export function update(){
+    cartUpdated = true;
+    setTimeout(() => {
+      cartUpdated = false;
+    }, animationDuration);
+  }
+
   import {
     createEventDispatcher
   } from 'svelte';
@@ -13,14 +24,14 @@
 {#if show}
 <div>
   <a href class="cart-icon-fixed" on:click={dispatchClick}>
-    <span class="cart-icon-count">{count}</span>
+    <span class="cart-icon-count {cartUpdated?'updated':''}">{count}</span>
   </a>
 </div>
 {/if}
 
 
 <style>
-:global(.cart-icon-fixed) {
+.cart-icon-fixed {
   text-decoration: none;
   position: fixed;
   z-index: 3;
@@ -52,7 +63,7 @@
   backface-visibility: hidden;
 }
 
-:global(.cart-icon-count) {
+.cart-icon-count {
   position: absolute;
   top: calc(var(--text-sm)*-2.5/2);
   right: calc(var(--text-sm)*-2.5/2);
@@ -98,7 +109,7 @@
   }
 }
 
-:global(.cart-icon-count.updated) {
+.cart-icon-count.updated {
   animation: beat 0.6s 1 ease-in-out;
 }
 

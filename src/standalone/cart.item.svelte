@@ -1,6 +1,12 @@
 <script>
-  import {UIButton} from "not-bulma";
-  import { createEventDispatcher } from 'svelte';
+  import {
+    UIButton
+  } from "not-bulma";
+
+  import {
+    createEventDispatcher
+  } from 'svelte';
+  
   let dispatch = createEventDispatcher();
 
   export let moneySign = '&#8381;';
@@ -66,7 +72,6 @@
 
 
 <style>
-
   :root {
     --color-primary: #4a90e2;
     --color-secondary: #e2844a;
@@ -100,7 +105,7 @@
     text-align: center;
   }
 
-  .image img{
+  .image img {
     max-width: 5em;
     max-height: 5em;
   }
@@ -113,7 +118,8 @@
     width: 30%;
   }
 
-  .cart-item-title a, .cart-item-title a:visited {
+  .cart-item-title a,
+  .cart-item-title a:visited {
     color: var(--color-primary);
     text-decoration: none;
   }
@@ -147,19 +153,19 @@
     min-width: calc(var(--text-base-size)*var(--text-scale-ratio)*6);
   }
 
-  .quantity > span {
+  .quantity>span {
     -webkit-appearance: none;
-    display:inline-block;
+    display: inline-block;
     text-align: center;
     font-size: calc(var(--text-base-size)*var(--text-scale-ratio));
   }
 
-  .quantity .number{
+  .quantity .number {
     line-height: calc(var(--text-base-size)*var(--text-scale-ratio));
     padding-top: calc(var(--text-base-size)*var(--text-scale-ratio) / 2);
   }
 
-  .quantity > *{
+  .quantity>* {
     height: calc(var(--text-base-size)*var(--text-scale-ratio)*2);
     width: calc(var(--text-base-size)*var(--text-scale-ratio)*2);
   }
@@ -173,11 +179,9 @@
     font-weight: 300;
   }
 
-:global(.cart-list .total-price) {
-  padding-top: 0px;
-  margin-left: auto;
-  font-size: var(--text-base-size);
-}
-
-
+  .total-price {
+    padding-top: 0px;
+    margin-left: auto;
+    font-size: var(--text-base-size);
+  }
 </style>
