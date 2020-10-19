@@ -173,5 +173,11 @@
     font-weight: 300;
   }
 
+:global(.cart-list .total-price) {
+  padding-top: 0px;
+  margin-left: auto;
+  font-size: var(--text-base-size);
+}
+
 
 </style>

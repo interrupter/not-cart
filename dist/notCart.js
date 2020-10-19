@@ -14761,9 +14761,9 @@ var notCart = (function (exports) {
     			span1 = element("span");
     			t2 = text(t2_value);
     			t3 = space();
-    			attr(span0, "class", "cart-item-property-title svelte-1ms3djp");
-    			attr(span1, "class", "cart-item-property-value svelte-1ms3djp");
-    			attr(div, "class", "cart-item-property svelte-1ms3djp");
+    			attr(span0, "class", "cart-item-property-title svelte-1yh9b29");
+    			attr(span1, "class", "cart-item-property-value svelte-1yh9b29");
+    			attr(div, "class", "cart-item-property svelte-1yh9b29");
     		},
     		m(target, anchor) {
     			insert(target, div, anchor);
@@ -14881,20 +14881,20 @@ var notCart = (function (exports) {
     			create_component(uibutton2.$$.fragment);
     			t10 = space();
     			div5 = element("div");
-    			attr(div0, "class", "column is-1 buttons item-remove-btn svelte-1ms3djp");
+    			attr(div0, "class", "column is-1 buttons item-remove-btn svelte-1yh9b29");
     			attr(a, "href", a_href_value = /*data*/ ctx[0].item.url);
-    			attr(a, "class", "svelte-1ms3djp");
-    			attr(div1, "class", "column is-3 cart-item-title svelte-1ms3djp");
+    			attr(a, "class", "svelte-1yh9b29");
+    			attr(div1, "class", "column is-3 cart-item-title svelte-1yh9b29");
     			if (img.src !== (img_src_value = /*data*/ ctx[0].item.image)) attr(img, "src", img_src_value);
     			attr(img, "alt", img_alt_value = /*data*/ ctx[0].item.title);
-    			attr(img, "class", "svelte-1ms3djp");
-    			attr(div2, "class", "column image is-2 svelte-1ms3djp");
-    			attr(span0, "class", "cart-item-description svelte-1ms3djp");
-    			attr(div3, "class", "column description is-3 svelte-1ms3djp");
-    			attr(span1, "class", "number ml-1 mr-1 svelte-1ms3djp");
-    			attr(div4, "class", "column quantity is-2 svelte-1ms3djp");
-    			attr(div5, "class", "column total-price is-1 svelte-1ms3djp");
-    			attr(div6, "class", "item columns svelte-1ms3djp");
+    			attr(img, "class", "svelte-1yh9b29");
+    			attr(div2, "class", "column image is-2 svelte-1yh9b29");
+    			attr(span0, "class", "cart-item-description svelte-1yh9b29");
+    			attr(div3, "class", "column description is-3 svelte-1yh9b29");
+    			attr(span1, "class", "number ml-1 mr-1 svelte-1yh9b29");
+    			attr(div4, "class", "column quantity is-2 svelte-1yh9b29");
+    			attr(div5, "class", "column total-price is-1 svelte-1yh9b29");
+    			attr(div6, "class", "item columns svelte-1yh9b29");
     			attr(div6, "data-id", div6_data_id_value = /*data*/ ctx[0].id);
     		},
     		m(target, anchor) {

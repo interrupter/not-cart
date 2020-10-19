@@ -26,7 +26,6 @@ export default {
       use: [
         ['sass', {
           includePaths: [
-            './src/standalone/theme',
             './node_modules'
           ]
         }]
