@@ -10,7 +10,7 @@ exports.DEFAULT_TTL_MIN  = DEFAULT_TTL_MIN;
 exports.DEFAULT_TTL_MAX  = DEFAULT_TTL_MAX;
 exports.DEFAULT_ROLES_LIST = ['user', 'guest', 'client', 'admin', 'root', 'confirmed'];
 exports.DEFAULT_HASH_ALGO = 'sha1';
-exports.thisModelName = 'User';
+exports.thisModelName = 'Cart';
 exports.keepNotExtended = false;
 
 exports.enrich = {
