@@ -14761,9 +14761,9 @@ var notCart = (function (exports) {
     			span1 = element("span");
     			t2 = text(t2_value);
     			t3 = space();
-    			attr(span0, "class", "cart-item-property-title svelte-obav0k");
-    			attr(span1, "class", "cart-item-property-value svelte-obav0k");
-    			attr(div, "class", "cart-item-property svelte-obav0k");
+    			attr(span0, "class", "cart-item-property-title svelte-plqw6g");
+    			attr(span1, "class", "cart-item-property-value svelte-plqw6g");
+    			attr(div, "class", "cart-item-property svelte-plqw6g");
     		},
     		m(target, anchor) {
     			insert(target, div, anchor);
@@ -14881,20 +14881,20 @@ var notCart = (function (exports) {
     			create_component(uibutton2.$$.fragment);
     			t10 = space();
     			div5 = element("div");
-    			attr(div0, "class", "column is-1 buttons item-remove-btn svelte-obav0k");
+    			attr(div0, "class", "column buttons item-remove-btn svelte-plqw6g");
     			attr(a, "href", a_href_value = /*data*/ ctx[0].item.url);
-    			attr(a, "class", "svelte-obav0k");
-    			attr(div1, "class", "column is-3 cart-item-title svelte-obav0k");
-    			if (img.src !== (img_src_value = /*data*/ ctx[0].item.image)) attr(img, "src", img_src_value);
+    			attr(a, "class", "svelte-plqw6g");
+    			attr(div1, "class", "column is-3 cart-item-title svelte-plqw6g");
+    			if (img.src !== (img_src_value = /*data*/ ctx[0].item.image.micro)) attr(img, "src", img_src_value);
     			attr(img, "alt", img_alt_value = /*data*/ ctx[0].item.title);
-    			attr(img, "class", "svelte-obav0k");
-    			attr(div2, "class", "column image is-2 svelte-obav0k");
-    			attr(span0, "class", "cart-item-description svelte-obav0k");
-    			attr(div3, "class", "column description is-3 svelte-obav0k");
-    			attr(span1, "class", "number ml-1 mr-1 svelte-obav0k");
-    			attr(div4, "class", "column quantity is-2 svelte-obav0k");
-    			attr(div5, "class", "column total-price is-1 svelte-obav0k");
-    			attr(div6, "class", "item columns svelte-obav0k");
+    			attr(img, "class", "svelte-plqw6g");
+    			attr(div2, "class", "column image is-2 svelte-plqw6g");
+    			attr(span0, "class", "cart-item-description svelte-plqw6g");
+    			attr(div3, "class", "column description is-3 svelte-plqw6g");
+    			attr(span1, "class", "number ml-1 mr-1 svelte-plqw6g");
+    			attr(div4, "class", "column quantity is-2 svelte-plqw6g");
+    			attr(div5, "class", "column total-price is-1 svelte-plqw6g");
+    			attr(div6, "class", "item columns mr-3 svelte-plqw6g");
     			attr(div6, "data-id", div6_data_id_value = /*data*/ ctx[0].id);
     		},
     		m(target, anchor) {
@@ -14938,7 +14938,7 @@ var notCart = (function (exports) {
     				attr(a, "href", a_href_value);
     			}
 
-    			if (!current || dirty & /*data*/ 1 && img.src !== (img_src_value = /*data*/ ctx[0].item.image)) {
+    			if (!current || dirty & /*data*/ 1 && img.src !== (img_src_value = /*data*/ ctx[0].item.image.micro)) {
     				attr(img, "src", img_src_value);
     			}
 
@@ -15202,11 +15202,11 @@ var notCart = (function (exports) {
     			attr(h2, "class", "title is-2");
     			attr(span, "class", "total-price");
     			attr(h3, "class", "subtitle -s3");
-    			attr(div0, "class", "cart-list-items-content svelte-1mh17lo");
+    			attr(div0, "class", "cart-list-items-content svelte-18y4y8");
     			attr(div1, "class", "buttons is-grouped is-centered");
     			attr(div2, "class", "content");
     			attr(div3, "class", "box");
-    			attr(div4, "class", "cart-list-items-paper svelte-1mh17lo");
+    			attr(div4, "class", "cart-list-items-paper svelte-18y4y8");
     		},
     		m(target, anchor) {
     			insert(target, div4, anchor);
@@ -15617,8 +15617,10 @@ var notCart = (function (exports) {
 
     	let dispatch = createEventDispatcher();
 
-    	function dispatchClick() {
+    	function dispatchClick(e) {
+    		e.preventDefault();
     		dispatch("click", {});
+    		return false;
     	}
 
     	$$self.$$set = $$props => {
