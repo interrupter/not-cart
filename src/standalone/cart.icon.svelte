@@ -36,7 +36,7 @@
 .cart-icon-fixed {
   text-decoration: none;
   position: fixed;
-  z-index: 3;
+  z-index: 30;
   height: 72px;
   width: 72px;
   overflow: visible;
