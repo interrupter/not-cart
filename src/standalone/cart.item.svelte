@@ -45,7 +45,7 @@
   $: priceItem = formatPrice(parseFloat(data.item.price) * parseInt(data.quantity));
 </script>
 
-<div class="item columns mr-3" data-id="{data.id}">
+<div class="item columns mr-3 is-vcentered" data-id="{data.id}">
   <div class="column buttons item-remove-btn">
     <UIButton action="{itemRemove}" icon="times-circle"></UIButton>
   </div>

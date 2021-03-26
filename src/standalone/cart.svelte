@@ -86,7 +86,7 @@
 	<div class="cart-list-items-paper">
 		<div class="box">
 			<h2 class="title is-2">{title}</h2>
-			<h3 class="subtitle -s3">Всего товаров: {totalQuantity}, общей стоимостью: <span class="total-price">{@html totalPrice}</span></h3>
+			<h3 class="subtitle is-3">Всего товаров: {totalQuantity}, общей стоимостью: <span class="total-price">{@html totalPrice}</span></h3>
 			<div class="content">
 				<div class="cart-list-items-content">
 					{#each content as item}
