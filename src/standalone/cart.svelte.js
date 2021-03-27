@@ -1,11 +1,10 @@
-//import "../styles/common/common.css";
+
 import CartComponent from './cart.svelte';
 import CartItemComponent from './cart.item.svelte';
 import CartIconComponent from './cart.icon.svelte';
 import { writable } from 'svelte/store';
 
 const OPT_DEFAULT_ANIMATION_DURATION = 600;
-const SELECTOR_CART_OVERLAY_ID = 'cart-overlay';
 const STR_CART_CONTENT_LIST_TITLE = 'Ваша корзина';
 const STR_CART_ORDER_FORM_TITLE = 'Оформление заказа';
 const STR_CART_ORDER_SUBMIT_CAPTION = 'Отправить';

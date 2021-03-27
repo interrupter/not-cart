@@ -24211,9 +24211,9 @@ var notCart = (function (exports) {
     			span1 = element("span");
     			t2 = text(t2_value);
     			t3 = space();
-    			attr(span0, "class", "cart-item-property-title svelte-1m0fuc1");
-    			attr(span1, "class", "cart-item-property-value svelte-1m0fuc1");
-    			attr(div, "class", "cart-item-property svelte-1m0fuc1");
+    			attr(span0, "class", "cart-item-property-title");
+    			attr(span1, "class", "cart-item-property-value");
+    			attr(div, "class", "cart-item-property");
     		},
     		m(target, anchor) {
     			insert(target, div, anchor);
@@ -24318,24 +24318,22 @@ var notCart = (function (exports) {
     			t10 = space();
     			div4 = element("div");
     			attr(a0, "href", "");
-    			attr(a0, "class", "has-text-danger svelte-1m0fuc1");
+    			attr(a0, "class", "has-text-danger");
     			attr(a1, "href", a1_href_value = /*data*/ ctx[0].item.url);
-    			attr(a1, "class", "svelte-1m0fuc1");
-    			attr(div0, "class", "column is-3 cart-item-title svelte-1m0fuc1");
+    			attr(div0, "class", "column is-3 cart-item-title");
     			if (img.src !== (img_src_value = /*data*/ ctx[0].item.image.micro)) attr(img, "src", img_src_value);
     			attr(img, "alt", img_alt_value = /*data*/ ctx[0].item.title);
-    			attr(img, "class", "svelte-1m0fuc1");
-    			attr(div1, "class", "column image is-2 is-hidden-touch svelte-1m0fuc1");
-    			attr(span0, "class", "cart-item-description svelte-1m0fuc1");
-    			attr(div2, "class", "column description is-3 is-hidden-touch svelte-1m0fuc1");
+    			attr(div1, "class", "column image is-2 is-hidden-touch");
+    			attr(span0, "class", "cart-item-description");
+    			attr(div2, "class", "column description is-3 is-hidden-touch");
     			attr(a2, "href", "");
-    			attr(a2, "class", "has-text-dark svelte-1m0fuc1");
-    			attr(span1, "class", "ml-1 mr-1 svelte-1m0fuc1");
+    			attr(a2, "class", "has-text-dark");
+    			attr(span1, "class", "ml-1 mr-1");
     			attr(a3, "href", "");
-    			attr(a3, "class", "has-text-dark svelte-1m0fuc1");
-    			attr(div3, "class", "column quantity is-2 svelte-1m0fuc1");
-    			attr(div4, "class", "column total-price is-1 svelte-1m0fuc1");
-    			attr(div5, "class", "item columns mr-3 is-vcentered svelte-1m0fuc1");
+    			attr(a3, "class", "has-text-dark");
+    			attr(div3, "class", "column quantity is-2");
+    			attr(div4, "class", "column total-price is-2");
+    			attr(div5, "class", "item columns mr-3 is-vcentered");
     			attr(div5, "data-id", div5_data_id_value = /*data*/ ctx[0].id);
     		},
     		m(target, anchor) {
@@ -24656,11 +24654,11 @@ var notCart = (function (exports) {
     			attr(h2, "class", "title is-2");
     			attr(span, "class", "total-price");
     			attr(h3, "class", "subtitle is-3");
-    			attr(div0, "class", "cart-list-items-content svelte-urhlju");
+    			attr(div0, "class", "cart-list-items-content");
     			attr(div1, "class", "buttons is-grouped is-centered mt-4");
     			attr(div2, "class", "content");
-    			attr(div3, "class", "box svelte-urhlju");
-    			attr(div4, "class", "cart-list-items-paper svelte-urhlju");
+    			attr(div3, "class", "box");
+    			attr(div4, "class", "cart-list-items-paper");
     		},
     		m(target, anchor) {
     			insert(target, div4, anchor);
@@ -24986,9 +24984,9 @@ var notCart = (function (exports) {
     			a = element("a");
     			span = element("span");
     			t = text(/*count*/ ctx[0]);
-    			attr(span, "class", span_class_value = "cart-icon-count " + (/*cartUpdated*/ ctx[2] ? "updated" : "") + " svelte-z4a9ku");
+    			attr(span, "class", span_class_value = "cart-icon-count " + (/*cartUpdated*/ ctx[2] ? "updated" : ""));
     			attr(a, "href", "");
-    			attr(a, "class", "cart-icon-fixed svelte-z4a9ku");
+    			attr(a, "class", "cart-icon-fixed");
     		},
     		m(target, anchor) {
     			insert(target, div, anchor);
@@ -25004,7 +25002,7 @@ var notCart = (function (exports) {
     		p(ctx, dirty) {
     			if (dirty & /*count*/ 1) set_data(t, /*count*/ ctx[0]);
 
-    			if (dirty & /*cartUpdated*/ 4 && span_class_value !== (span_class_value = "cart-icon-count " + (/*cartUpdated*/ ctx[2] ? "updated" : "") + " svelte-z4a9ku")) {
+    			if (dirty & /*cartUpdated*/ 4 && span_class_value !== (span_class_value = "cart-icon-count " + (/*cartUpdated*/ ctx[2] ? "updated" : ""))) {
     				attr(span, "class", span_class_value);
     			}
     		},
@@ -25102,8 +25100,6 @@ var notCart = (function (exports) {
     		return this.$$.ctx[5];
     	}
     }
-
-    //import "../styles/common/common.css";
 
     const OPT_DEFAULT_ANIMATION_DURATION = 600;
     const STR_CART_CONTENT_LIST_TITLE = 'Ваша корзина';

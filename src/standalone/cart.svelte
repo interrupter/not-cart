@@ -102,35 +102,3 @@
 		</div>
 	</div>
 </UIOverlay>
-
-
-<style>
-	.cart-list-items-paper {
-		display: block;
-		height: 85vh;
-		width: 85vw;
-		margin: 5vh auto auto auto;
-	}
-
-	.cart-list-items-content {
-		overflow-y: auto;
-		height: 70vh;
-	}
-
-	@media (max-width:1080px) {
-		.cart-list-items-paper {
-			display: block;
-			overflow-y: scroll;
-			height: 100vh;
-			width: 100vw;
-			margin: 0px;
-		}
-
-		.box{
-			width: 100%;
-			height: 100%;
-			margin: 0px;
-		}
-
-	}
-</style>

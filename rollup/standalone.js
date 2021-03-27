@@ -4,7 +4,7 @@ import postcss from 'rollup-plugin-postcss';
 import resolve from "rollup-plugin-node-resolve";
 
 export default {
-  input: 'src/standalone/cart.svelte.js',
+  input: 'src/standalone/index.js',
   output: {
     name: 'notCart',
     format: 'iife',
