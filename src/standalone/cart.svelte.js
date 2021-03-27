@@ -245,27 +245,27 @@ class notCart {
 
   async putData(url, data) {
     let opts = this.getStandartRequestOptions();
-    const response = await fetch(url, Object.assign(opts, {
+    const response = await fetch(url, {...opts,
       method: 'PUT', // *GET, POST, PUT, DELETE, etc.
       body: JSON.stringify(data) // body data type must match "Content-Type" header
-    }));
+    });
     return await response.json(); // parses JSON response into native JavaScript objects
   }
 
   async postData(url, data) {
     let opts = this.getStandartRequestOptions();
-    const response = await fetch(url, Object.assign(opts, {
+    const response = await fetch(url, {...opts,
       method: 'POST', // *GET, POST, PUT, DELETE, etc.
       body: JSON.stringify(data) // body data type must match "Content-Type" header
-    }));
+    });
     return await response.json(); // parses JSON response into native JavaScript objects
   }
 
   async getData(url) {
     let opts = this.getStandartRequestOptions();
-    const response = await fetch(url, Object.assign(opts, {
+    const response = await fetch(url, {...opts,
       method: 'GET'
-    }));
+    });
     return await response.json(); // parses JSON response into native JavaScript objects
   }
 

@@ -28,6 +28,7 @@
 	let isEmpty = false;
 
 	$: {
+		show,
 		updateNow,
 		update();
 	}
@@ -93,7 +94,7 @@
 					<NotCartItem bind:data="{item}" on:quantity.change={onItemQuantityChange} on:item.remove={onItemRemove} />
 					{/each}
 				</div>
-				<div class="buttons is-grouped is-centered">
+				<div class="buttons is-grouped is-centered mt-4">
 					<UIButton action={closeCart} title="Закрыть" color="secondary" classes="cart-form-close" />
 					<UIButton action={startOrder} title="Заказать" disabled={isEmpty} raised={true} color="primary" classes="cart-form-order" />
 				</div>
@@ -112,16 +113,24 @@
 	}
 
 	.cart-list-items-content {
-		overflow-y: scroll;
-		max-height: 70vh;
+		overflow-y: auto;
+		height: 70vh;
 	}
 
-	@media (max-width:800px) {
+	@media (max-width:1080px) {
 		.cart-list-items-paper {
 			display: block;
 			overflow-y: scroll;
 			height: 100vh;
 			width: 100vw;
+			margin: 0px;
 		}
+
+		.box{
+			width: 100%;
+			height: 100%;
+			margin: 0px;
+		}
+
 	}
 </style>

@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" href="/assets/not-bulma/notBulma.css">
 	<link rel="stylesheet" href="/assets/cart/notCart.css">
 	<link rel="stylesheet" href="/assets/order/notOrder.css">
 	<script type="module" src="/fetch.xhr.js"></script>
@@ -46,6 +47,7 @@
 <body>
 	<button class="addToCart">Добавить в корзину</button>
 	<button class="showCart">Показать корзину</button>
+	<script src="/assets/not-bulma/notBulma.js"></script>
 	<script src="/assets/order/notOrder.js"></script>
 	<script src="/assets/cart/notCart.js"></script>
 	<script>
@@ -192,13 +194,13 @@
 				btnAdd.addEventListener('click', (e) => {
 					let itemData = e.currentTarget.dataset;
 					window.CART.add({
-						id: parseInt(itemData.id),
-						url: itemData.url,
-						title: itemData.title,
-						image: itemData.image,
-						description: itemData.description,
-						properties: TESTIES[parseInt(itemData.index)].properties,
-						price: itemData.price
+						id: 						parseInt(itemData.id),
+						url: 						itemData.url,
+						title: 					itemData.title,
+						image: 					itemData.image,
+						description: 		itemData.description,
+						properties: 		TESTIES[parseInt(itemData.index)].properties,
+						price: 					itemData.price
 					});
 				});
 			})

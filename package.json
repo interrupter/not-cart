@@ -1,10 +1,11 @@
 {
 		"name": "not-cart",
-		"version": "0.0.24",
+		"version": "0.0.25",
 		"description": "not-* family cart model and interface in not- environment",
 		"main": "index.js",
 		"scripts": {
-				"build": "./bin/build.sh",
+				"build": "ENV=production ./bin/build.sh",
+				"build:prod": "ENV=production ./bin/build.sh",
 				"buildtest": "ENV=test ./bin/build.sh && rm -rf ./test/browser/assets/cart/* && mv dist/* ./test/browser/assets/cart/",
 				"prelint": "npm run build",
 				"lint": "./node_modules/.bin/eslint ./src/**/**/*.js",
@@ -13,7 +14,11 @@
 				"test:open": "_ENV_NODE_='liquid' ./node_modules/.bin/mocha --reporter spec ./test/node && npm run cypress:open",
 				"test:run": "_ENV_NODE_='liquid' ./node_modules/.bin/mocha --reporter spec ./test/node && npm run cypress:run",
 				"docs": "./node_modules/.bin/jsdoc -c jsdoc.json",
-				"cover": "_ENV_NODE_='liquid' nyc npm run test"
+				"cover": "_ENV_NODE_='liquid' nyc npm run test",
+				"build:dev": "ENV=development ./bin/build.sh",
+				"build:dev:watch": "watch 'npm run build:dev' ./src --interval=5",
+				"serve": "serve ./test/browser",
+				"dev": "npm-run-all --parallel build:dev:watch serve"
 		},
 		"repository": {
 				"type": "git",
@@ -31,19 +36,21 @@
 		},
 		"homepage": "https://github.com/interrupter/not-user#readme",
 		"dependencies": {
+				"not-bulma": "^0.3.10",
 				"not-config": "*",
 				"not-error": "*",
 				"not-filter": "*",
 				"not-locale": "*",
 				"not-log": "*",
 				"not-one-time-code": "*",
-				"rollup": "^2.42.3",
+				"rollup": "^2.43.0",
 				"sass": "^1.32.8",
+				"terser": "^5.6.1",
 				"uuidv4": "*",
 				"validator": "^13.5.2"
 		},
 		"devDependencies": {
-				"@babel/core": "^7.13.10",
+				"@babel/core": "^7.13.13",
 				"@babel/plugin-transform-arrow-functions": "^7.13.0",
 				"@babel/plugin-transform-runtime": "^7.13.10",
 				"@babel/preset-env": "^7.13.12",
@@ -57,7 +64,7 @@
 				"cypress": "^6.8.0",
 				"electron": "^12.0.2",
 				"electron-mocha": "^10.0.0",
-				"eslint": "^7.22.0",
+				"eslint": "^7.23.0",
 				"expect": "^26.6.2",
 				"ink-docstrap": "*",
 				"istanbul-lib-coverage": "^3.0.0",
@@ -68,6 +75,7 @@
 				"mocha-webpack": "^1.1.0",
 				"mongodb-memory-server": "^6.9.6",
 				"not-overlay": "*",
+				"npm-run-all": "^4.1.5",
 				"nyc": "^15.1.0",
 				"regenerator-runtime": "^0.13.7",
 				"request": "^2.88.2",
@@ -79,9 +87,12 @@
 				"rollup-plugin-postcss": "^4.0.0",
 				"rollup-plugin-sass": "^1.2.2",
 				"rollup-plugin-svelte": "^7.1.0",
+				"serve": "^11.3.2",
 				"serve-static": "^1.14.1",
+				"server": "^1.0.32",
 				"should": "^13.2.3",
 				"svelte": "^3.35.0",
+				"watch": "^1.0.2",
 				"whatwg-fetch": "^3.6.2"
 		},
 		"nyc": {

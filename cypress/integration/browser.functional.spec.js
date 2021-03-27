@@ -1,19 +1,87 @@
+const beforeAdd = [
+  {
+    "id": "item-1",
+    "item": {
+      "id": 1,
+      "title": "test item 1"
+    },
+    "quantity": 1
+  },
+  {
+    "id": "item-1232",
+    "item": {
+      "id": 2,
+      "title": "test item 11"
+    },
+    "quantity": 2
+  },
+  {
+    "id": "item-10",
+    "item": {
+      "id": 3,
+      "title": "test item 111"
+    },
+    "quantity": 3
+  }
+]
+;
 
+let afterAdd = [
+  {
+    "id": "item-1",
+    "item": {
+      "id": 1,
+      "title": "test item 1"
+    },
+    "quantity": 1
+  },
+  {
+    "id": "item-1232",
+    "item": {
+      "id": 2,
+      "title": "test item 11"
+    },
+    "quantity": 2
+  },
+  {
+    "id": "item-10",
+    "item": {
+      "id": 3,
+      "title": "test item 111"
+    },
+    "quantity": 3
+  },
+  {
+    "id": "this-item-id",
+    "item":{
+      "id":333,
+      "title": "are we happy?"
+    },
+    "quantity": 1
+  }
+];
 
 describe('notCart browser testing', function() {
-  before(async () => {
-    await cy.exec('npm run buildtest');
+  before(() => {
+    cy.exec('npm run buildtest');
   });
 
   it('notCart functions', function(done) {
-    cy.server({
-      delay: 10
-    });
-    cy.route('GET', '/api/cart', 'fixture:cart.load.json');
-    cy.route('GET', '/api/cart/loadAfterAdd', 'fixture:cart.load.after.add.json');
-    cy.route('PUT', '/api/cart', 'fixture:cart.save.json');
-    cy.route('PUT', '/api/cart/add', 'fixture:cart.add.json');
-    cy.route('POST', '/api/order', 'fixture:cart.order.json');
+    cy.intercept('GET', '/api/cart', beforeAdd);
+    cy.intercept('GET', '/api/cart/loadAfterAdd', afterAdd);
+    cy.intercept('PUT', '/api/cart', {
+      "ok": true
+    }
+);
+    cy.intercept('PUT', '/api/cart/add', {
+      "ok": true,
+      "id": "this-item-id"
+    }
+);
+    cy.intercept('POST', '/api/order', {
+      "ok": true
+    }
+);
     cy.visit('http://localhost:7357/');
     cy.wait(2000);
     cy.get('li.failures em').then(($res)=>{

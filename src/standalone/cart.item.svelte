@@ -1,6 +1,6 @@
 <script>
   import {
-    UIButton
+    UIIcon
   } from "not-bulma";
 
   import {
@@ -46,14 +46,17 @@
 </script>
 
 <div class="item columns mr-3 is-vcentered" data-id="{data.id}">
-  <div class="column buttons item-remove-btn">
-    <UIButton action="{itemRemove}" icon="times-circle"></UIButton>
+  <div class="column is-3 cart-item-title">
+    <a href on:click|preventDefault={itemRemove} class="has-text-danger">
+      <UIIcon font="times" />
+    </a>
+    &nbsp;
+    <a href="{data.item.url}">{data.item.title}</a>
   </div>
-  <div class="column is-3 cart-item-title"><a href="{data.item.url}">{data.item.title}</a></div>
-  <div class="column image is-2">
+  <div class="column image is-2 is-hidden-touch">
     <img src="{data.item.image.micro}" alt="{data.item.title}" />
   </div>
-  <div class="column description is-3">
+  <div class="column description is-3 is-hidden-touch">
     <span class="cart-item-description">{data.item.description}</span>
     {#each data.item.properties as item}
     <div class="cart-item-property">
@@ -63,9 +66,13 @@
     {/each}
   </div>
   <div class="column quantity is-2">
-    <UIButton action="{quantityMinus}" classes="minus-btn" icon="minus"></UIButton>
-    <span class="number ml-1 mr-1">{data.quantity}</span>
-    <UIButton action="{quantityPlus}" classes="plus-btn" icon="plus"></UIButton>
+    <a href on:click|preventDefault={quantityMinus} class="has-text-dark">
+      <UIIcon font="minus" />
+    </a>
+    <span class="ml-1 mr-1">{data.quantity}</span>
+    <a href on:click|preventDefault={quantityPlus} class="has-text-dark">
+      <UIIcon font="plus" />
+    </a>
   </div>
   <div class="column total-price is-1">{@html priceItem}</div>
 </div>
@@ -95,6 +102,9 @@
     padding: 20px 30px;
     display: flex;
     border-bottom: 1px solid #E1E8EE;
+    width: 100%;
+    overflow: hidden;
+    padding: 0px;
   }
 
   .image {
@@ -113,7 +123,6 @@
 
 
   .cart-item-title {
-    margin-top: 1em;
     display: flex;
     min-width: 135px;
     width: 30%;
@@ -126,11 +135,9 @@
   }
 
   .description {
-    padding-top: 10px;
+    padding: 0.5rem;
     margin-right: 60px;
     min-width: 155px;
-    margin-top: 1em;
-    margin-bottom: 1em;
   }
 
   .description .cart-item-property .cart-item-property-title {
@@ -161,14 +168,8 @@
     font-size: calc(var(--text-base-size)*var(--text-scale-ratio));
   }
 
-  .quantity .number {
-    line-height: calc(var(--text-base-size)*var(--text-scale-ratio));
-    padding-top: calc(var(--text-base-size)*var(--text-scale-ratio) / 2);
-  }
-
-  .quantity>* {
-    height: calc(var(--text-base-size)*var(--text-scale-ratio)*2);
-    width: calc(var(--text-base-size)*var(--text-scale-ratio)*2);
+  .quantity span {
+    width: 3rem;
   }
 
   .total-price {
@@ -184,4 +185,5 @@
     margin-left: auto;
     font-size: var(--text-base-size);
   }
+
 </style>
